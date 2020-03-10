@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation: fadeIn 600ms ease-in-out;
+    -moz-animation: fadeIn 900ms ease-in-out;
+    -o-animation: fadeIn 600ms ease-in-out;
+    animation: fadeIn 900ms ease-in-out;
+}
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-body {
+    margin: 0 10% 10% 10%;
+    position: relative;
+    height: 100%;
+}
+
+.container-menu {
+    height: 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.container-menu .logotipo {
+    padding-top: 35px;
+    padding-left: 10px;
+}
+
+.container-menu .navigation {
+    padding-top: 35px;
+}
+
+.navigation a {
+    font-family: Roboto-Regular;
+    font-size: 16px;
+    color: #111111;
+    text-decoration: none;
+    padding-right: 30px;
+}
+
+.container-banner {
+    min-height: 300px;
+    width: 100%;
+    background: #FBDFDB;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.presentation {
+    margin-left: 60px;
+    padding-top: 100px;
+    padding-right: 150px;
+}
+
+.presentation h1 {
+    font-family: Roboto-Bold;
+    font-size: 32px;
+    color: #111111;
+}
+
+.presentation p {
+    opacity: 0.7;
+    font-family: Roboto-Regular;
+    font-size: 18px;
+    color: #000000;
+    line-height: 28px;
+}
+
+.logo-chef {
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
+}
+
+.container-cards {
+    margin: 50px 0 20px 0;
+}
+
+.container-cards h1 {
+    font-family: Roboto-Bold;
+    font-size: 24px;
+    color: #111111;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+    padding: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 140px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card h3 {
+    font-family: Roboto-Regular;
+    font-size: 18px;
+    color: #111111;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.card p {
+    font-family: Roboto-Regular;
+    font-size: 14px;
+    color: #777777;
+}
+
+.container-footer {
+    background: #eee;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container-footer p {
+    font-family: Roboto-Regular;
+    font-size: 14px;
+    color: #888;
+}
+
+
+/* About */
+
+.container-about {
+    margin-top: 50px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.container-about h1 {
+    font-family: Roboto-Bold;
+    font-size: 24px;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+.container-about h2 {
+    font-family: Roboto-Bold;
+    font-size: 20px;
+    color: #111111;
+    margin: 20px 0;
+}
+
+.container-about p {
+    font-family: Roboto-Regular;
+    font-size: 18px;
+    color: #444444;
+    line-height: 28px;
+}
