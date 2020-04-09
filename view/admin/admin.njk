@@ -1,0 +1,53 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Admin - FoodFy</title>
+{% endblock head %}
+
+{% block menu %}
+    <div class="container-black">
+        <div class="logotipo">
+            <a href="/"><img src="logo-black.png" alt="FoodFy"></a>
+        </div>
+        <div class="navigation black">
+            <a href="/admin">Lista</a>
+            <a href="/create">Criar</a>
+        </div>
+    </div>
+{% endblock menu %}
+
+{% block content %}
+
+    <div class="container-cards-black fadeIn">
+
+        <div class="cards">
+            <div class="card">
+                <h3>Gerenciar receitas</h3>
+            </div>
+        </div>
+
+        <div class="recipes">
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    <div>
+                        <div class="image">
+                            <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                        </div>
+                    </div>
+                    <div class="colum_right">
+                        <div class="title">
+                            {{recipe.title}}
+                        </div>
+                        <div class="author">
+                            por
+                            {{recipe.author}}
+                        </div>
+                        <a href="/admin/{{recipe.id}}">Visualizar</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

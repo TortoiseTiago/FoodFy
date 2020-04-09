@@ -1,0 +1,35 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Nova receita - FoodFy</title>
+{% endblock head %}
+
+{% block menu %}
+
+    <div class="container-black">
+        <div class="logotipo">
+            <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
+        </div>
+        <div class="navigation black">
+            <a href="/admin">Lista</a>
+            <a href="/create">Criar</a>
+        </div>
+    </div>
+{% endblock menu %}
+
+{% block content %}
+
+    <form class="" method="POST" action="/create?_method=PUT">
+
+        <section class="details">
+
+            <h2>Editar a Receita</h3>
+
+            {% include "admin/fields.njk" %}
+
+        </section>
+    </form>
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

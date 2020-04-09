@@ -1,27 +1,21 @@
 const express = require('express')
 const routes = express.Router()
-const receitas = require('./data')
+const recipes = require('./controller/recipes')
 
 routes.get("/", (req, res) => {
     return res.redirect("home")
 })
 
-routes.get("/home", (req, res) => {
-    return res.render("home")
-})
+routes.get("/home", recipes.home)
+routes.get("/about", recipes.about)
+routes.get("/index", recipes.index)
+routes.get("/index/:id", recipes.show)
 
-routes.get("/about", (req, res) => {
-    return res.render("about")
-})
-routes.get("/recipes", (req, res) => {
-    return res.render("recipes", { items: receitas })
-})
-routes.get("/recipes/:index", (req, res) => {
-    const recipes = [...receitas];
-    const index = req.params.index;
+routes.get("/admin", recipes.admin)
+routes.get("/create", recipes.create)
+routes.post("/create", recipes.post)
+routes.get("/admin/:id", recipes.view)
+routes.get("/admin/:id/edit", recipes.edit)
 
-    console.log(recipes[index])
-    return res.send(index)
-})
 
 module.exports = routes

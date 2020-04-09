@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>{{recipe.title}}
+        - FoodFy</title>
+{% endblock head %}
+
+{% block content %}
+    <div class="banner_recipe">
+        <img src="{{recipe.image}}" alt="{{recipe.title}}">
+        <h3>{{recipe.title}}</h3>
+        <h2>por {{recipe.author}}</h2>
+    </div>
+    <div class="ingredients">
+        <h3>Ingredientes</h3>
+        {% for ingredient in recipe.ingredients %}
+            <p>- {{ingredient}}</p>
+        {% endfor %}
+    </div>
+    <div class="preparations">
+        <h3>Modo de preparo</h3>
+        {% for preparation in recipe.preparation %}
+            <p>- {{preparation}}</p>
+        {% endfor %}
+    </div>
+    <div class="information">
+        <h3>Informações adicionais</h3>
+        <p>{{recipe.information}}</p>
+    </div>
+{% endblock content %}
