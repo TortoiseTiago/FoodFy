@@ -7,11 +7,11 @@
 {% block menu %}
     <div class="container-black">
         <div class="logotipo">
-            <a href="/"><img src="logo-black.png" alt="FoodFy"></a>
+            <a><img src="/logo-black.png" alt="FoodFy"></a>
         </div>
         <div class="navigation black">
-            <a href="/admin">Lista</a>
-            <a href="/create">Criar</a>
+            <a href="/admin/recipes">Receitas</a>
+            <a href="/admin/chefs">Chefs</a>
         </div>
     </div>
 {% endblock menu %}
@@ -20,9 +20,12 @@
 
     <div class="container-cards-black fadeIn">
 
-        <div class="cards">
-            <div class="card">
+        <div class="header_admin">
+            <div>
                 <h3>Gerenciar receitas</h3>
+            </div>
+            <div>
+                <a class="button createRecipe" href="/admin/chefs/create">Cadastrar nova receita</a>
             </div>
         </div>
 
@@ -42,7 +45,7 @@
                             por
                             {{recipe.author}}
                         </div>
-                        <a href="/admin/{{recipe.id}}">Visualizar</a>
+                        <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
                     </div>
                 </div>
             {% endfor %}

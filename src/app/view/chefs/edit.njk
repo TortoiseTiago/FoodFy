@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Editar Chef - FoodFy</title>
+{% endblock head %}
+
+{% block menu %}
+    <div class="container-black">
+        <div class="logotipo">
+            <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
+        </div>
+        <div class="navigation black">
+            <a href="/admin/recipes">Receitas</a>
+            <a href="/admin/chefs">Chefs</a>
+        </div>
+    </div>
+{% endblock menu %}
+
+{% block content %}
+    <form method="POST" action="/admin/chefs?_method=PUT">
+
+        <section class="details">
+            <h2>Edição do Chef</h3>
+            <div class="item">
+                <div>Nome Completo</div>
+                <div>
+                    <input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Antonio Soares" 
+                    value="{{chef.name}}">
+                </div>
+            </div>
+            <div class="item">
+                <div>Foto</div>
+                <div>
+                    <input 
+                    type="url" 
+                    name="avatar_url" 
+                    placeholder="http://" 
+                    value="{{chef.avatar_url}}">
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{{ chef.id }}">
+
+            <button type="submit">Salvar novo Chef</button>
+        </section>
+    </form>
+
+    <form id="formDelete" action="/admin/chefs?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{ chef.id }}">
+        <button class="buttonRed" type="submit">Deletar</button>
+    </form>
+
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}

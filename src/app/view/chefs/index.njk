@@ -1,0 +1,49 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Chefs - FoodFy</title>
+{% endblock head %}
+
+{% block menu %}
+    <div class="container-black">
+        <div class="logotipo">
+            <a><img src="/logo-black.png" alt="FoodFy"></a>
+        </div>
+        <div class="navigation black">
+            <a href="/admin/recipes">Receitas</a>
+            <a href="/admin/chefs">Chefs</a>
+        </div>
+    </div>
+{% endblock menu %}
+
+{% block content %}
+    <div class="container-cards-black fadeIn">
+        <div class="header_admin">
+            <div>
+                <h3>Gerenciar Chefs</h3>
+            </div>
+            <div>
+                <a class="button createRecipe" href="/admin/chefs/create">Cadastrar novo Chef</a>
+            </div>
+        </div>
+        <div class="chefs">
+            {% for chef in chefs %}
+                <div class="chef">
+                    <div class="image">
+                        <img src="{{chef.avatar_url}}" alt="{{chef.name}}">
+                    </div>
+                    <div class="colum_right">
+                        <div class="name">
+                            <p>{{chef.name}}</p>
+                        </div>
+                        
+                        <a href="/admin/chefs/{{chef.id}}">Visualizar</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer %}{% endblock footer %} 
+{# esse footer é para não aparecer o footer do layout #}

@@ -12,7 +12,6 @@
     </head>
 
     <body>
-
         {% block menu %}
             <div class="container-menu">
                 <div class="logotipo">
@@ -20,8 +19,14 @@
                 </div>
                 <div class="navigation">
                     <a href="/about">Sobre</a>
-                    <a href="/index">Receitas</a>
-                    <a href="/admin">Admin</a>
+                    <a href="/recipes">Receitas</a>
+                    <a href="/chefs">Chefs</a>
+                </div>
+                <div class="search">
+                    <form method="GET">
+                        <input type="text" name="filter" placeholder="Buscar receita/chef" value="{{filter}}">
+                        <button type="submit">Filtrar</button>
+                    </form>
                 </div>
             </div>
         {% endblock menu %}

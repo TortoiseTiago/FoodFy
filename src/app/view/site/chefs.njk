@@ -1,18 +1,16 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Receitas - FoodFy</title>
+    <title>Chefs - FoodFy</title>
 {% endblock head %}
 
 {% block content %}
 
-    <div class="cards">
-        <div class="card">
-            <h3>Nossas receitas</h3>
-        </div>
+    <div class="cards fadeIn">
+        <h3>Nossos Chefs</h3>
     </div>
 
-    <div class="recipes">
+    <div class="recipes fadeIn">
         {% for recipe in recipes %}
             <div class="recipe">
                 <div>
@@ -30,7 +28,7 @@
                         {{recipe.author}}
                     </div>
 
-                    <a href="/index/{{recipe.id}}">Visualizar</a>
+                    <a href="/recipes/{{recipe.id}}">Visualizar</a>
                 </div>
             </div>
 

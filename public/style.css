@@ -1,384 +1,442 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
 @-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .fadeIn {
-    -webkit-animation: fadeIn 600ms ease-in-out;
-    -moz-animation: fadeIn 900ms ease-in-out;
-    -o-animation: fadeIn 600ms ease-in-out;
-    animation: fadeIn 900ms ease-in-out;
+  -webkit-animation: fadeIn 600ms ease-in-out;
+  -moz-animation: fadeIn 900ms ease-in-out;
+  -o-animation: fadeIn 600ms ease-in-out;
+  animation: fadeIn 900ms ease-in-out;
 }
 
 * {
-    margin: 0;
-    border: 0;
-    padding: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  background: whitesmoke;
 }
 
 .container-body {
-    margin: 0 10% 10% 10%;
-    position: relative;
-    height: 100%;
+  margin: 0 10% 10% 10%;
+  position: relative;
+  height: 100%;
 }
-
 .container-menu,
 .container-black {
-    padding-left: 10%;
-    height: 100px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    box-sizing: border-box;
+  padding: 8px 10%;
+  height: 100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  box-sizing: border-box;
 }
-
 .container-menu,
 .container-black .logotipo {
-    padding-top: 35px;
+  padding-top: 35px;
 }
-
 .container-menu,
 .container-black .navigation {
-    padding-top: 35px;
+  padding-top: 35px;
 }
-
 .container-black {
-    background: black;
+  background: black;
 }
-
 .navigation a {
-    font-family: Roboto-Regular;
-    font-size: 16px;
-    color: #111111;
-    text-decoration: none;
-    padding-right: 30px;
+  font-family: Roboto-Regular;
+  font-size: 16px;
+  color: #111111;
+  text-decoration: none;
+  padding-right: 30px;
 }
-
 .black a {
-    color: white;
+  color: white;
 }
-
 .container-banner {
-    min-height: 300px;
-    width: 100%;
-    background: #FBDFDB;
-    border-radius: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-bottom: 30px;
-    position: relative;
+  min-height: 300px;
+  width: 100%;
+  background: #fbdfdb;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 30px;
+  position: relative;
 }
-
 .presentation {
-    margin-left: 60px;
-    padding-top: 100px;
-    padding-right: 150px;
+  margin-left: 60px;
+  padding-top: 100px;
+  padding-right: 150px;
 }
-
 .presentation h1 {
-    font-family: Roboto-Bold;
-    font-size: 32px;
-    color: #111111;
+  font-family: Roboto-Bold;
+  font-size: 32px;
+  color: #111111;
 }
-
 .presentation p {
-    opacity: 0.7;
-    font-family: Roboto-Regular;
-    font-size: 18px;
-    color: #000000;
-    line-height: 28px;
+  opacity: 0.7;
+  font-family: Roboto-Regular;
+  font-size: 18px;
+  color: #000000;
+  line-height: 28px;
 }
-
 .logo-chef {
-    position: absolute;
-    bottom: 0px;
-    right: 100px;
+  position: absolute;
+  bottom: 0px;
+  right: 100px;
 }
-
 .container-cards {
-    margin: 50px 0 20px 0;
+  margin: 50px 0 20px 0;
 }
-
 .container-cards h1 {
-    font-family: Roboto-Bold;
-    font-size: 24px;
-    color: #111111;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
+  font-family: Roboto-Bold;
+  font-size: 24px;
+  color: #111111;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
 }
-
 .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
-
 .card {
-    padding: 10px;
+  padding: 10px;
 }
-
 .card img {
-    width: 100%;
-    height: 140px;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
+  width: 100%;
+  height: 140px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
 }
-
 .card h3 {
-    font-family: Roboto-Regular;
-    font-size: 18px;
-    color: #111111;
-    padding-top: 20px;
-    padding-bottom: 5px;
+  font-family: Roboto-Regular;
+  font-size: 18px;
+  color: #111111;
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
-
 .card p {
-    font-family: Roboto-Regular;
-    font-size: 14px;
-    color: #777777;
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #777777;
 }
 
+/* == FOOTER == */
 .container-footer {
-    background: #eee;
-    text-align: center;
-    padding: 20px;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
+  background: #eee;
+  text-align: center;
+  padding: 20px;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
-
 .container-footer p {
-    font-family: Roboto-Regular;
-    font-size: 14px;
-    color: #888;
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #888;
 }
-
 
 /* About */
-
 .container-about {
-    margin-top: 50px;
-    width: 100%;
-    padding-left: 10px;
+  margin-top: 50px;
+  width: 100%;
+  padding-left: 10px;
 }
-
 .container-about h1 {
-    font-family: Roboto-Bold;
-    font-size: 24px;
-    color: #111111;
-    margin-bottom: 20px;
+  font-family: Roboto-Bold;
+  font-size: 24px;
+  color: #111111;
+  margin-bottom: 20px;
 }
-
 .container-about h2 {
-    font-family: Roboto-Bold;
-    font-size: 20px;
-    color: #111111;
-    margin: 20px 0;
+  font-family: Roboto-Bold;
+  font-size: 20px;
+  color: #111111;
+  margin: 20px 0;
 }
-
 .container-about p {
-    font-family: Roboto-Regular;
-    font-size: 18px;
-    color: #444444;
-    line-height: 28px;
+  font-family: Roboto-Regular;
+  font-size: 18px;
+  color: #444444;
+  line-height: 28px;
 }
-
 
 /* == ADMIN == */
 
 .details {
-    margin: 50px 0;
+  margin: 50px 0;
 }
-
 .details h2 {
-    font-family: 'Roboto-Bold';
-    font-size: 24px;
-    color: #111111;
+  font-family: "Roboto-Bold";
+  font-size: 24px;
+  color: #111111;
 }
-
 .item {
-    padding: 16px 0;
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 16px;
-    color: #111111;
+  padding: 16px 0;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 16px;
+  color: #111111;
 }
-
 .item input {
-    margin: 10px 0;
-    background: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    height: 30px;
-    width: 100%;
+  margin: 10px 0;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  height: 30px;
+  width: 100%;
 }
-
 .item textarea {
-    margin: 10px 0;
-    background: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    width: 100%;
+  margin: 10px 0;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  width: 100%;
+  color: black;
 }
-
 
 /* == Receitas == */
 
 .recipes {
-    padding-top: 30px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  padding-top: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
 .recipe {
-    padding: 20px 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+  padding: 20px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
-
 .recipe .image img {
-    width: 172px;
-    height: 80px;
-    border-radius: 9px;
+  width: 172px;
+  height: 80px;
+  border-radius: 9px;
 }
-
 .colum_right {
-    padding: 0 0 0 20px;
+  padding: 0 0 0 20px;
 }
-
 .title {
-    font-family: Roboto-Regular;
-    font-size: 18px;
-    color: #111111;
-    padding-bottom: 5px;
+  font-family: Roboto-Regular;
+  font-size: 18px;
+  color: #111111;
+  padding-bottom: 5px;
 }
-
 .author {
-    font-family: Roboto-Regular;
-    font-size: 14px;
-    color: #777777;
-    padding-bottom: 5px;
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  color: #777777;
+  padding-bottom: 5px;
 }
-
 .colum_right a {
-    font-family: Roboto-Bold;
-    font-size: 14px;
-    color: #4d2eb3;
-    text-decoration: none;
+  font-family: Roboto-Bold;
+  font-size: 14px;
+  color: #4d2eb3;
+  text-decoration: none;
 }
-
 
 /* == SHOW == */
 
 .header_admin {
-    padding: 55px 0 24px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: right;
+  padding: 55px 0 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: right;
 }
-
 .header_admin h3 {
-    font-family: Roboto-Bold;
-    font-size: 24px;
-    color: #111111;
-    text-align: left;
+  font-family: Roboto-Bold;
+  font-size: 24px;
+  color: #111111;
+  text-align: left;
 }
-
 .header_admin .button a {
-    background: #6558C3;
-    border-radius: 5px;
-    padding: 9px 11px;
-    text-decoration: none;
-    color: white;
-    font-family: Roboto-Bold;
+  background: #6558c3;
+  border-radius: 5px;
+  padding: 9px 11px;
+  text-decoration: none;
+  color: white;
+  font-family: Roboto-Bold;
 }
-
 .banner_recipe {
-    text-align: center;
-    padding-bottom: 30px;
+  text-align: center;
+  padding-bottom: 30px;
 }
-
 .banner_recipe img {
-    width: 100%;
-    border-radius: 15px;
+  width: 100%;
+  border-radius: 15px;
 }
-
 .banner_recipe h3 {
-    font-family: Roboto-Bold;
-    font-size: 36px;
-    color: #111111;
-    padding-top: 50px;
+  font-family: Roboto-Bold;
+  font-size: 36px;
+  color: #111111;
+  padding-top: 50px;
+}
+.banner_recipe h2 {
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #777777;
 }
 
-.banner_recipe h2 {
-    font-family: Roboto-Regular;
-    font-size: 20px;
-    color: #777777;
-}
 
 .ingredients h3,
 .preparations h3,
 .information h3 {
-    font-family: Roboto-Bold;
-    font-size: 24px;
-    color: #111111;
-    padding-top: 41px;
-    padding-bottom: 20px;
+  font-family: Roboto-Bold;
+  font-size: 24px;
+  color: #111111;
+  padding-top: 41px;
+  padding-bottom: 20px;
 }
 
 .ingredients p,
 .preparations p,
 .information p {
-    font-family: Roboto-Regular;
-    font-size: 18px;
-    color: #444444;
-    line-height: 28px;
+  font-family: Roboto-Regular;
+  font-size: 18px;
+  color: #444444;
+  line-height: 28px;
+}
+
+.ingredients .hide,
+.preparations .hide {
+  visibility: hidden;
+  height: 1px;
+}
+
+/* == BUTTONS == */
+button,
+.button {
+  background: #6558c3;
+  border-radius: 6px;
+  padding: 8px 8px;
+  text-decoration: none;
+  color: white;
+  font-family: Roboto-Bold;
+}
+.buttonRed {
+  background: red;
+  border-radius: 6px;
+  padding: 8px 32px;
+  text-decoration: none;
+  color: white;
+  font-family: Roboto-Bold;
+}
+
+/* FILTRO DE PESQUISA */
+.search {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.search form {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  grid-gap: 10px;
+}
+.search form input {
+  border: 1px solid #999;
+  padding: 8px 8px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* == LISTAGEM DE CHEFS == */
+.chefs {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.chef {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-bottom: 40px
+}
+.chef .image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.chef .colum_right {
+    padding: 20px;
+}
+.chef .colum_right p {
+  font-size: 18px;
+}
+.chef .colum_right a {
+  font-size: 14px;
+}
+
+/* == DETALHES DO CHEF == */
+.viewChef {
+  margin-bottom: 50px;
+}
+.bannerChef {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+.bannerChef img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+.bannerChef .chefName h3 {
+  font-size: 36px;
+}
+.bannerChef .countRecipe p {
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 50px;
 }
