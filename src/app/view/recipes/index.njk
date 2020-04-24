@@ -42,7 +42,7 @@
                             {{recipe.title}}
                         </div>
                         <div class="author">
-                            por: 
+                            por:
                             {{recipe.chef_name}}
                         </div>
                         <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
@@ -51,6 +51,14 @@
             {% endfor %}
         </div>
     </div>
+    
+    <div class="table-container">
+        <div class="pagination" 
+        data-page={{pagination.page}} 
+        data-total={{pagination.total}} 
+        data-filter={{filter}}></div>
+    </div>
+
 {% endblock content %}
 
 {% block footer %}{% endblock footer %}

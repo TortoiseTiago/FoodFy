@@ -36,22 +36,25 @@ exports.post = (req, res) => {
     }
 
     Recipes.post(req.body, function (recipes) {
-        return res.redirect(`/admin/recipes/${recipe.id}`)
+        return res.redirect(`/admin/recipes`)
     })
 }
 exports.show = (req, res) => {
 
-    Recipess.find(req.params.id, function (recipes) {
+    Recipes.find(req.params.id, function (recipes) {
         if (!recipes) return res.send("Recipes not found!")
 
-        return res.render("recipess/show", { recipes })
+        return res.render("recipes/show", { recipes })
     })
 }
 exports.edit = (req, res) => {
-    Recipess.find(req.params.id, function (recipes) {
+
+    Recipes.find(req.params.id, function (recipes) {
         if (!recipes) return res.send("Recipes not found!")
 
-        return res.render("recipess/edit", { recipes })
+        Recipes.chefsSelectOptions(function (options) {
+            return res.render("recipes/edit", { recipes, chefsOptions: options })
+        })
     })
 }
 exports.put = (req, res) => {
@@ -61,13 +64,14 @@ exports.put = (req, res) => {
     for (key of keys) {
         if (req.body[key] == "") return res.send("Please, fill all filds")
     }
-    Recipess.update( req.body, function (recipess) {
-        return res.redirect(`/admin/recipess/${req.body.id}`)
+
+    Recipes.update( req.body, function (recipess) {
+        return res.redirect(`/admin/recipes/${req.body.id}`)
     })
     
 }
 exports.delete = (req, res) => {
-    Recipess.delete(req.body.id, function () {
-        return res.redirect("/admin/recipess")
+    Recipes.delete(req.body.id, function () {
+        return res.redirect("/admin/recipes")
     })
 }

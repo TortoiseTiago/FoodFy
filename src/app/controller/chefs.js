@@ -14,6 +14,7 @@ exports.index = (req, res) => {
         filter, page, limit, offset, callback(chefs) {
 
             const pagination = {
+                total: Math.ceil(chefs[0].total / limit),
                 page
             }
             return res.render("chefs/index", { chefs, pagination, filter })

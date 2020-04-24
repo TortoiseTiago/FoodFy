@@ -1,5 +1,9 @@
 const info = document.querySelectorAll('.recipe-info')
 const visibility = document.querySelectorAll('.visibility')
+const currentPage = location.pathname
+const menuItens = document.querySelectorAll("header .links a")
+const pagination = document.querySelector(".pagination")
+
 
 for(let i = 0; i < visibility.length; i++) {
   visibility[i].addEventListener('click', function(){
@@ -28,9 +32,6 @@ function addIngredient() {
     newField.children[0].value = "";
     ingredients.appendChild(newField);
 }
-document
-    .querySelector(".add-ingredient")
-    .addEventListener("click", addIngredient);
 
 function addPreparation() {
     const preparations = document.querySelector("#preparations")
@@ -46,6 +47,61 @@ function addPreparation() {
     newField.children[0].value = "";
     preparations.appendChild(newField);
 }
-document
-    .querySelector(".add-preparation")
-    .addEventListener("click", addPreparation);
+
+if (pagination) {
+  createPagination(pagination)
+}
+
+function paginate(selectedPage, totalPages) {
+
+  let pages = [],
+      oldPage
+
+  for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+
+      const FirstAndLastPage = currentPage == 1 || currentPage == totalPages
+      const pagesAfter = currentPage <= selectedPage + 2
+      const pagesBefore = currentPage >= selectedPage - 2
+
+      if (FirstAndLastPage || pagesBefore && pagesAfter) {
+          if (oldPage && currentPage - oldPage > 2) {
+              pages.push("...")
+          }
+
+          if (oldPage && currentPage - oldPage == 2) {
+              pages.push(oldPage + 1)
+          }
+
+          pages.push(currentPage)
+          oldPage = currentPage
+      }
+  }
+  return pages
+}
+
+function createPagination(pagination) {
+  const filter = pagination.dataset.filter
+  const page = +pagination.dataset.page
+  const total = +pagination.dataset.total
+  const pages = paginate(page, total)
+  
+  let elements = ""
+  
+  for (let page of pages) {
+      if (String(page).includes("...")) {
+          elements += `<span>${page}</span>`
+      } else {
+          if (filter) {
+              elements += `<a href="?page=${page}&filter=${filter}">${page}</a>`
+          } else {
+              elements += `<a href="?page=${page}">${page}</a>`
+          }
+      }
+  }
+  pagination.innerHTML = elements
+}
+
+
+document.querySelector(".add-preparation").addEventListener("click", addPreparation);
+
+document.querySelector(".add-ingredient").addEventListener("click", addIngredient);

@@ -71,32 +71,41 @@ module.exports = {
             if (err) throw `Database error! ${err}`
 
             callback(results.rows[0])
-            console.log(values)
         })
     },
     find(id, callback) {
 
         db.query(`
-            SELECT * FROM recipes WHERE id = $1`, [id], function (err, results) {
+            SELECT * FROM recipes 
+            WHERE id = $1
+            `, [id], function (err, results) {
             if (err) throw `Database error! ${err}`
 
             callback(results.rows[0])
         })
     },
     update(data, callback) {
-        
+
         const query = `
         UPDATE recipes SET
-        name=($1),
-        avatar_url=($2)
-    WHERE id = $3
-    `
+            chef_id=($1),
+            image=($2),
+            title=($3),
+            ingredients=($4),
+            preparation=($5),
+            information=($6)
+        WHERE id = $7
+        `
         const values = [
-            data.name,
-            data.avatar_url,
+            data.chef_id,
+            data.image,
+            data.title,
+            data.ingredients,
+            data.preparation,
+            data.information,
             data.id
         ]
-
+        console.log(values)
         db.query(query, values, function (err, results) {
             if (err) throw `Database error! ${err}`
             callback()

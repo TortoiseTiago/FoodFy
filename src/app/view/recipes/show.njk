@@ -6,45 +6,51 @@
 {% endblock head %}
 
 {% block menu %}
-
     <div class="container-black">
         <div class="logotipo">
-            <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
+            <a><img src="/logo-black.png" alt="FoodFy"></a>
         </div>
         <div class="navigation black">
-            <a href="/admin/recipes">Lista</a>
-            <a href="/admin/recipes/create">Criar</a>
+            <a href="/admin/recipes">Receitas</a>
+            <a href="/admin/chefs">Chefs</a>
         </div>
     </div>
 {% endblock menu %}
 
+
 {% block content %}
     <div class="header_admin">
-        <h3>Receita: {{recipe.title}}</h3>
-        <div class="button">
-            <a href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+        <h3>Receita: {{recipes.title}}</h3>
+        <div>
+            <a class="button" href="/admin/recipes/{{recipes.id}}/edit">Editar receita</a>
         </div>
     </div>
+
     <div class="banner_recipe">
-        <img src="{{recipe.image}}" alt="{{recipe.title}}">
-        <h3>{{recipe.title}}</h3>
-        <h2>por {{recipe.author}}</h2>
+        <img src="{{recipes.image}}" alt="{{recipes.title}}">
+        <h3>{{recipes.title}}</h3>
+        <h2>por {{recipes.chef_name}}</h2>
     </div>
+
     <div class="ingredients">
         <h3>Ingredientes</h3>
-        {% for ingredient in recipe.ingredients %}
-            <p>- {{ingredient}}</p>
+
+        {% for ingredient in recipes.ingredients %}
+            <p>- {{ ingredient }}</p>
         {% endfor %}
+
     </div>
+
     <div class="preparations">
         <h3>Modo de preparo</h3>
-        {% for preparation in recipe.preparation %}
+        {% for preparation in recipes.preparation %}
             <p>- {{preparation}}</p>
         {% endfor %}
     </div>
+    
     <div class="information">
         <h3>Informações adicionais</h3>
-        <p>{{recipe.information}}</p>
+        <p>{{recipes.information}}</p>
     </div>
 
 {% endblock content %}
