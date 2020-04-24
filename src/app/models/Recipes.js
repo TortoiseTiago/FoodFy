@@ -5,9 +5,7 @@ const { date } = require('../../lib/utils')
 module.exports = {
     paginate(params) {
 
-        params.callback([ ])
-
-        // const { filter, limit, offset, callback } = params
+        const { limit, offset, callback } = params
 
         // let query = "",
         //     filterQuery = "",
@@ -26,33 +24,46 @@ module.exports = {
         //     ) AS total`
         // }
 
-        // query = `
-        // SELECT recipes.*, ${totalQuery} , 
-        // count(recipes) AS total_recipes
-        // FROM recipes
-        // LEFT JOIN recipes ON (recipes.recipe_id = recipes.id)
-        // ${filterQuery}
-        // GROUP BY recipes.id LIMIT $1 OFFSET $2
-        // `
-        // db.query(query, [limit, offset], function (err, results) {
-        //     if (err) throw `Database error! ${err}`
+        query = `
+        SELECT * 
+        FROM recipes
+        GROUP BY recipes.id LIMIT $1 OFFSET $2
+        `
+        db.query(query, [limit, offset], function (err, results) {
+            if (err) throw `Database error! ${err}`
 
-        //     callback(results.rows)
-        // })
+            callback(results.rows)
+        })
+    },
+    chefsSelectOptions(callback) {
+        db.query(`
+        SELECT name, id FROM chefs`, function (err, results) {
+            if (err) throw `Database error! ${err}`
+
+            callback(results.rows)
+        })
     },
     post(data, callback) {
 
         const query = `
             INSERT INTO recipes (
-                name,
-                avatar_url,
+                chef_id,
+                image,
+                title,
+                ingredients,
+                preparation,
+                information,
                 created_at
-            ) VALUES ($1, $2, $3)
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING id
         `
         const values = [
-            data.name,
-            data.avatar_url,
+            data.chef_id,
+            data.image,
+            data.title,
+            data.ingredients,
+            data.preparation,
+            data.information,
             date(Date.now()).iso
         ]
 
@@ -60,6 +71,7 @@ module.exports = {
             if (err) throw `Database error! ${err}`
 
             callback(results.rows[0])
+            console.log(values)
         })
     },
     find(id, callback) {

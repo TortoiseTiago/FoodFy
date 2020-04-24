@@ -34,9 +34,9 @@ routes.delete("/admin/chefs", chefs.delete) // rota para deletar um chef
 
 // ADMINISTRAÇÃO DAS RECEITAS
 routes.get("/admin/recipes", recipes.index) // lista de receitas cadastrados
-// routes.get("/admin/recipes/create", recipes.create) // formulario para cadastro de receita
-// routes.post("/admin/recipes", recipes.post) // rota de cadastro das informações dos receita
-// routes.get("/admin/recipes/:id", recipes.show) // visualização do receita
+routes.get("/admin/recipes/create", recipes.create) // formulario para cadastro de receita
+routes.post("/admin/recipes", recipes.post) // rota de cadastro das informações dos receita
+routes.get("/admin/recipes/:id", recipes.show) // visualização do receita
 // routes.get("/admin/recipes/:id/edit", recipes.edit) //rota para edição do receita
 // routes.put("/admin/recipes", recipes.put) //rota para atualização de dados
 // routes.delete("/admin/recipes", recipes.delete) // rota para deletar um receita

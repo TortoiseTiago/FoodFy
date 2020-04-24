@@ -13,7 +13,7 @@ exports.index = (req, res) => {
     let offset = limit * (page - 1)
 
     const params = {
-        filter, page, limit, offset, callback(recipes) {
+        page, limit, offset, callback(recipes) {
 
             const pagination = {
                 page
@@ -21,24 +21,22 @@ exports.index = (req, res) => {
             return res.render("recipes/index", { recipes, pagination, filter })
         }
     }
-
     Recipes.paginate(params)
-
-
 }
 exports.create = (req, res) => {
-    return res.render("recipess/create")
+    Recipes.chefsSelectOptions(function (options) {
+        return res.render("recipes/create", { chefsOptions: options })
+    })
 }
 exports.post = (req, res) => {
 
     const keys = Object.keys(req.body)
-
     for (key of keys) {
         if (req.body[key] == "") return res.send("Please, fill all filds")
     }
 
-    Recipess.post(req.body, function (recipess) {
-        return res.redirect(`/admin/recipess`)
+    Recipes.post(req.body, function (recipes) {
+        return res.redirect(`/admin/recipes/${recipe.id}`)
     })
 }
 exports.show = (req, res) => {

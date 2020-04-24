@@ -25,7 +25,7 @@
                 <h3>Gerenciar receitas</h3>
             </div>
             <div>
-                <a class="button createRecipe" href="/admin/chefs/create">Cadastrar nova receita</a>
+                <a class="button createRecipe" href="/admin/recipes/create">Cadastrar nova receita</a>
             </div>
         </div>
 
@@ -42,8 +42,8 @@
                             {{recipe.title}}
                         </div>
                         <div class="author">
-                            por
-                            {{recipe.author}}
+                            por: 
+                            {{recipe.chef_name}}
                         </div>
                         <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
                     </div>
