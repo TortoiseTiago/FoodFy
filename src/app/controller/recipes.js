@@ -1,7 +1,4 @@
-const db = require('../../config/db')
-
 const Recipes = require('../models/Recipes')
-
 
 exports.index = (req, res) => {
 
@@ -16,6 +13,7 @@ exports.index = (req, res) => {
         page, limit, offset, callback(recipes) {
 
             const pagination = {
+                total: Math.ceil(recipes[0].total / limit),
                 page
             }
             return res.render("recipes/index", { recipes, pagination, filter })
@@ -41,10 +39,10 @@ exports.post = (req, res) => {
 }
 exports.show = (req, res) => {
 
-    Recipes.find(req.params.id, function (recipes) {
-        if (!recipes) return res.send("Recipes not found!")
+    Recipes.find(req.params.id, function (recipe) {
+        if (!recipe) return res.send("Recipes not found!")
 
-        return res.render("recipes/show", { recipes })
+        return res.render("recipes/show", { recipe })
     })
 }
 exports.edit = (req, res) => {

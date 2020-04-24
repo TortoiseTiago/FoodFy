@@ -1,6 +1,5 @@
 const Chefs = require('../models/Chefs')
 
-
 exports.index = (req, res) => {
 
     let { filter, page, limit } = req.query

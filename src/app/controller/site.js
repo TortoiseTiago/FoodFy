@@ -1,5 +1,5 @@
-
-
+const Chefs = require('../models/Chefs')
+const Recipes = require('../models/Recipes')
 
 exports.home = (req, res) => {
     return res.render("site/home")

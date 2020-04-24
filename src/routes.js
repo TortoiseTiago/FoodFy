@@ -16,10 +16,8 @@ routes.get("/admin", (req, res)=>{
 // PAGINAS ABERTAS AO PUBLICO
 routes.get("/home", site.home) // inicio do site com as receitas mais acessadas  
 routes.get("/about", site.about) // um pouco da historia do site
-routes.get("/recipes", site.recipes) // todas as receitas do site 
-routes.get("/chefs", site.chefs) // listagem de chefs do site
-routes.get("/recipes/:id", site.showRecipe)  // detalhes das receitas do site
-routes.get("/chefs/:id", site.showChef) // detales e receitas do chef selecionado
+routes.get("/receituario", site.recipes) // todas as receitas do site 
+routes.get("/cozinheiros", site.chefs) // listagem de chefs do site
 
 
 // ADMINISTRAÇÃO DOS CHEFS

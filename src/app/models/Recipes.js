@@ -5,30 +5,26 @@ const { date } = require('../../lib/utils')
 module.exports = {
     paginate(params) {
 
-        const { limit, offset, callback } = params
+        const { filter, limit, offset, callback } = params
 
-        // let query = "",
-        //     filterQuery = "",
-        //     totalQuery = `(
-        //         SELECT count(*) FROM recipes
-        //     ) AS total `
-
-        // if (filter) {
-
-        //     filterQuery = `
-        //     WHERE recipes.title ILIKE '%${filter}%'
-        //     `
-        //     totalQuery = `(
-        //         SELECT count(*) FROM recipes
-        //         ${filterQuery}
-        //     ) AS total`
-        // }
+        let query = "",
+            filterQuery = ""
+        
+        if (filter) {
+            filterQuery = `
+            WHERE chefs.name ILIKE '%${filter}%'
+            OR recipes.title ILIKE '%${filter}%'
+            `}
 
         query = `
-        SELECT * 
+        SELECT recipes.* AS recipe,
+        json_build_object('id',chefs.id, 'name',chefs.name) AS chef
         FROM recipes
-        GROUP BY recipes.id LIMIT $1 OFFSET $2
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        ${filterQuery}
+        LIMIT $1 OFFSET $2
         `
+
         db.query(query, [limit, offset], function (err, results) {
             if (err) throw `Database error! ${err}`
 
@@ -76,8 +72,11 @@ module.exports = {
     find(id, callback) {
 
         db.query(`
-            SELECT * FROM recipes 
-            WHERE id = $1
+            SELECT recipes.* AS recipes,
+            json_build_object('id',chefs.id, 'name',chefs.name) AS chef
+            FROM recipes 
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            WHERE recipes.id = $1
             `, [id], function (err, results) {
             if (err) throw `Database error! ${err}`
 
@@ -118,5 +117,10 @@ module.exports = {
 
             callback()
         })
+    },
+    searchChef(id, callback) {
+        db.query(`
+            SELECT name, id FROM chefs
+        `)
     }
 }

@@ -209,7 +209,6 @@ body {
 }
 
 /* == Receitas == */
-
 .recipes {
   padding-top: 30px;
   width: 100%;
@@ -250,7 +249,6 @@ body {
 }
 
 /* == SHOW == */
-
 .header_admin {
   padding: 55px 0 24px 0;
   display: grid;
@@ -290,8 +288,6 @@ body {
   font-size: 20px;
   color: #777777;
 }
-
-
 
 /* == BUTTONS == */
 button,
@@ -388,7 +384,6 @@ button,
 }
 
 /* == FORM DAS RECEITAS == */
-
 .details {
   margin: 50px 0;
 }
@@ -436,7 +431,6 @@ button,
   border-radius: 4px;
   font-family: 'Roboto';
 }
-
 .ingredients h3,
 .preparations h3,
 .information h3 {
@@ -460,33 +454,26 @@ button,
   height: 1px;
 }
 
-/* == paginação ==  */
-
 /* PAGINATION */
-
 .table-container {
   display: grid;
   grid-template: 64px 1fr 16px 1fr;
 }
-
 .table-container .header {
   margin: 0;
   align-self: start;
 }
-
 .table-container .pagination {
   margin: 0;
   align-self: end;
   justify-self: center;
 }
-
 .pagination a,
 .paginarion span {
   color: var(--color-rocket);
   text-decoration: none;
   margin-right: 16px;
 }
-
 .pagination a:hover {
   filter: brightness(0.3);
   border-bottom: 1px solid var(--color-rocket);
