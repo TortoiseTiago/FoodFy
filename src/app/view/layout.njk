@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/style.css">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
 
-        {% block head %}
-            <title>Inicio - FoodFy</title>
-        {% endblock head %}
+    {% block head %}
+      <title>Inicio - FoodFy</title>
+    {% endblock head %}
 
-    </head>
+  </head>
 
-    <body>
-        {% block menu %}
-            <div class="container-menu">
-                <div class="logotipo">
-                    <a href="/"><img src="/logo.png" alt="FoodFy"></a>
-                </div>
-                <div class="navigation">
-                    <a href="/about">Sobre</a>
-                    <a href="/receituario">Receitas</a>
-                    <a href="/cozinheiros">Chefs</a>
-                </div>
-                <div class="search">
-                    <form method="GET">
-                        <input type="text" name="filter" placeholder="Buscar receita/chef" value="{{filter}}">
-                        <button type="submit">Filtrar</button>
-                    </form>
-                </div>
-            </div>
-        {% endblock menu %}
+  <body>
+    {% block menu %}
+      <div class="container-menu">
 
-        <div class="container-body">
-            {% block content %}{% endblock content %}
+        <div class="logotipo">
+          <a href="/"><img src="/logo.png" alt="FoodFy"></a>
         </div>
 
-        {% block footer %}
-            <div class="container-footer">
-                <p>Todos direitos reservados, receitas Foodfy.</p>
-            </div>
-        {% endblock footer %}
-        <script src="/script.js"></script>
-    </body>
+        <div class="navigation">
+          <a href="/about">Sobre</a>
+          <a href="/receituario">Receitas</a>
+          <a href="/cozinheiros">Chefs</a>
+        </div>
+
+        <div class="search">
+          <form method="GET">
+            <input type="text" name="filter" placeholder="Buscar receita/chef" value="{{filter}}">
+            <button type="submit">Filtrar</button>
+          </form>
+        </div>
+      </div>
+    {% endblock menu %}
+
+    <div class="container-body">
+      {% block content %}{% endblock content %}
+    </div>
+
+    {% block footer %}
+      <div class="container-footer">
+        <p>Todos direitos reservados, receitas Foodfy.</p>
+      </div>
+    {% endblock footer %}
+
+    <script src="/script.js"></script>
+  </body>
 
 </html>

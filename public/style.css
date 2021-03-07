@@ -60,11 +60,17 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  background: whitesmoke;
+  background: rgba(245, 245, 245, 0.795);
 }
 
 .container-body {
-  margin: 0 10% 10% 10%;
+  width: 90%;
+  max-width: 920px;
+
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
   position: relative;
   height: 100%;
 }
@@ -330,22 +336,22 @@ button,
 
 /* == LISTAGEM DE CHEFS == */
 .chefs {
-    margin-top: 70px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .chef {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    margin-bottom: 40px
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-bottom: 40px;
 }
 .chef .image img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 .chef .colum_right {
-    padding: 10px 20px;
+  padding: 10px 20px;
 }
 .chef .colum_right .name p {
   font-size: 18px;
@@ -377,7 +383,7 @@ button,
   font-size: 36px;
 }
 .bannerChef .countRecipe p {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 16px;
   color: #777;
   margin-bottom: 50px;
@@ -429,7 +435,7 @@ button,
   background: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 .ingredients h3,
 .preparations h3,
