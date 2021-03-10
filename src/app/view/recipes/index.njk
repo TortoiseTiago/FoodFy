@@ -1,63 +1,65 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Admin - FoodFy</title>
+  <title>Admin - FoodFy</title>
 {% endblock head %}
 
 {% block menu %}
-    <div class="container-black">
-        <div class="logotipo">
-            <a><img src="/logo-black.png" alt="FoodFy"></a>
-        </div>
-        <div class="navigation black">
-            <a href="/admin/recipes">Receitas</a>
-            <a href="/admin/chefs">Chefs</a>
-        </div>
+  <div class="container-black">
+    <div class="logotipo">
+      <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
     </div>
+    <div class="navigation black">
+      <a href="/admin/recipes">Receitas</a>
+      <a href="/admin/chefs">Chefs</a>
+    </div>
+  </div>
 {% endblock menu %}
 
 {% block content %}
 
-    <div class="container-cards-black fadeIn">
+  <div class="container-cards-black fadeIn">
 
-        <div class="header_admin">
-            <div>
-                <h3>Gerenciar receitas</h3>
-            </div>
-            <div>
-                <a class="button createRecipe" href="/admin/recipes/create">Cadastrar nova receita</a>
-            </div>
-        </div>
+    <div class="header_admin">
+      <div>
+        <h3>Gerenciar receitas</h3>
+      </div>
+      <div>
+        <a class="button createRecipe" href="/admin/recipes/create">Cadastrar nova receita</a>
+      </div>
+    </div>
 
-        <div class="recipes">
-            {% for recipe in recipes %}
-                <div class="recipe">
-                    <div>
-                        <div class="image">
-                            <img src="{{recipe.image}}" alt="{{recipe.title}}">
-                        </div>
-                    </div>
-                    <div class="colum_right">
-                        <div class="title">
-                            {{recipe.title}}
-                        </div>
-                        <div class="author">
-                            por:
-                            {{ recipe.chef.name }}
-                        </div>
-                        <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
-                    </div>
-                </div>
-            {% endfor %}
+    <div class="recipes">
+      {% for recipe in recipes %}
+        <div class="recipe">
+          <div>
+            <div class="image">
+              <img src="{{recipe.image}}" alt="{{recipe.title}}">
+            </div>
+          </div>
+          <div class="colum_right">
+            <div class="title">
+              {{recipe.title}}
+            </div>
+            <div class="author">
+              {% for chef in chefs %}
+                {% if (chef.id == recipe.chef_id) %}
+                  <p>Por
+                    {{chef.name}}</p>
+                {% endif %}
+              {% endfor %}
+
+            </div>
+            <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
+          </div>
         </div>
+      {% endfor %}
     </div>
-    
-    <div class="table-container">
-        <div class="pagination" 
-        data-page={{pagination.page}} 
-        data-total={{pagination.total}} 
-        data-filter={{filter}}></div>
-    </div>
+  </div>
+  {# 
+  <div class="table-container">
+    <div class="pagination" data-page={{pagination.page} }="}" data-total={{pagination.total} data-filter={{filter}></div>
+  </div> #}
 
 {% endblock content %}
 

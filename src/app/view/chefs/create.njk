@@ -1,44 +1,41 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Nova receita - FoodFy</title>
+  <title>Nova receita - FoodFy</title>
 {% endblock head %}
 
 {% block menu %}
 
-    <div class="container-black">
-        <div class="logotipo">
-            <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
-        </div>
-        <div class="navigation black">
-            <a href="/admin/recipes">Lista</a>
-            <a href="/admin/recipes/create">Criar</a>
-        </div>
+  <div class="container-black">
+    <div class="logotipo">
+      <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
     </div>
+    <div class="navigation black">
+      <a href="/admin/recipes">Receitas</a>
+      <a href="/admin/chefs">Chefs</a>
+    </div>
+  </div>
 {% endblock menu %}
 
 {% block content %}
 
-    <form method="POST" action="/admin/chefs">
+  <form method="POST" action="/admin/chefs">
+    <section class="details">
+      <h2>Cadastro do Chef</h3>
+      <div class="item">
+        <div>Nome Completo</div>
+        <div><input type="text" name="name" placeholder="Antonio Soares" value="{{chef.name}}"></div>
+      </div>
 
-        <section class="details">
+      <div class="item">
+        <div>Foto</div>
+        <div><input type="url" name="avatar_url" placeholder="http://" value="{{chef.avatar_url}}"></div>
+      </div>
 
-            <h2>Cadastro do Chef</h3>
+      <button type="submit">Salvar novo Chef</button>
 
-            <div class="item">
-                <div>Nome Completo</div>
-                <div><input type="text" name="name" placeholder="   Antonio Soares" value="{{chef.name}}"></div>
-            </div>
-
-            <div class="item">
-                <div>Foto</div>
-                <div><input type="url" name="avatar_url" placeholder="   http://" value="{{chef.avatar_url}}"></div>
-            </div>
-
-            <button type="submit">Salvar novo Chef</button>
-
-        </section>
-    </form>
+    </section>
+  </form>
 
 {% endblock content %}
 

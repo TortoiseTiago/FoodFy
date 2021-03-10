@@ -1,82 +1,85 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Nova receita - FoodFy</title>
+  <title>Nova receita - FoodFy</title>
 {% endblock head %}
 
 {% block menu %}
-    <div class="container-black">
-        <div class="logotipo">
-            <a><img src="/logo-black.png" alt="FoodFy"></a>
-        </div>
-        <div class="navigation black">
-            <a href="/admin/recipes">Receitas</a>
-            <a href="/admin/chefs">Chefs</a>
-        </div>
+  <div class="container-black">
+    <div class="logotipo">
+      <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
     </div>
+    <div class="navigation black">
+      <a href="/admin/recipes">Receitas</a>
+      <a href="/admin/chefs">Chefs</a>
+    </div>
+  </div>
 {% endblock menu %}
 
 {% block content %}
 
-    <form method="POST" action="/admin/recipes">
+  <form method="POST" action="/admin/recipes">
 
-        <section class="details">
+    <section class="details">
+      <h2>Criando a Receita</h3>
 
-            <h2>Criando a Receita</h3>
+      <div class="item">
+        <div>
+          <p>
+            Autor da Receita
+          </p>
+        </div>
+        <div>
+          <select name="chef_id">
+            {% for chef in chefs %}
+              <option value="{{chef.id}}" {% if recipes.chef_id == chefs.id %} selected="selected" {% endif %}>
+                {{ chef.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="item">
+        <div>Foto da Receita</div>
+        <div><input type="text" name="image" placeholder="http://" value="{{recipe.image}}"></div>
+      </div>
 
-            <div class="item">
-                <div><p> Autor da Receita </p></div>
-                <div>
-                    <select name="chef_id">
-                        {% for chef in chefsOptions %}
-                            <option value="{{chef.id}}" {% if recipes.chef_id == chef.id %} selected="selected" {% endif %}>
-                                {{ chef.name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-            <div class="item">
-                <div>Foto da Receita</div>
-                <div><input type="text" name="image" placeholder="http://" value="{{recipe.image}}"></div>
-            </div>
+      <div class="item">
+        <div>Nome da receita</div>
+        <div><input type="text" name="title" placeholder="Frango a passarinho" value="{{recipe.title}}"></div>
+      </div>
 
-            <div class="item">
-                <div>Nome da receita</div>
-                <div><input type="text" name="title" placeholder="Frango a passarinho" value="{{recipe.title}}"></div>
-            </div>
+      <div class="item">
+        <div>Ingredientes</div>
+        <div id="ingredients">
+          <div class="ingredient">
+            <input type="text" name="ingredients[]" placeholder="Ingrediente" value="{{recipe.ingredients}}"/>
+          </div>
+        </div>
+        <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+      </div>
 
-            <div class="item">
-                <div>Ingredientes</div>
-                <div id="ingredients">
-                    <div class="ingredient">
-                        <input type="text" name="ingredients[]" placeholder="Ingrediente" value="{{recipe.ingredients}}"/>
-                    </div>
-                </div>
-                <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
-            </div>
+      <div class="item">
+        <div>Modo de Preparo</div>
+        <div id="preparations">
+          <div class="preparation">
+            <input type="text" name="preparation[]" placeholder="Adicione o passo" value="{{recipe.preparation}}"/>
+          </div>
+        </div>
+        <button type="button" class="add-preparation">Adicionar novo passo</button>
+      </div>
 
-            <div class="item">
-                <div>Modo de Preparo</div>
-                <div id="preparations">
-                    <div class="preparation">
-                        <input type="text" name="preparation[]" placeholder="Adicione o passo" value="{{recipe.preparation}}"/>
-                    </div>
-                </div>
-                <button type="button" class="add-preparation">Adicionar novo passo</button>
-            </div>
+      <div class="item large">
+        <div>Informações adicionais</div>
+        <div>
+          <textarea name="information" cols="30" rows="10" value="{{recipe.information}}"></textarea>
+        </div>
+      </div>
 
-            <div class="item large">
-                <div>Informações adicionais</div>
-                <div>
-                    <textarea name="information" id="" cols="30" rows="10" value="{{recipe.information}}"></textarea>
-                </div>
-            </div>
+      <button type="submit">Salvar receita</button>
 
-            <button type="submit">Salvar receita</button>
-
-        </section>
-    </form>
+    </section>
+  </form>
 
 {% endblock content %}
 

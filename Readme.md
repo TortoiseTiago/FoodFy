@@ -74,13 +74,13 @@
 
 -[Persistindo dados do FoodFy](https://github.com/rocketseat-education/bootcamp-launchbase-desafios-05/blob/master/desafios/05-persistindo-dados-foodfy.md)
 
-- [] Banco de dados
-- [] Cadastro de chefs
-- [] Busca de receitas
-- [] Lista de chefs
+- [ ] Banco de dados
+- [ ] Cadastro de chefs
+- [ ] Busca de receitas
+- [ ] Lista de chefs
 
 ### Desafio 7: Upload de Imagens
 
 - [Upload de Imagens](https://github.com/rocketseat-education/bootcamp-launchbase-desafios-07)
 
-- [] Envio de imagens
+- [ ] Envio de imagens

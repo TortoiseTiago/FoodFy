@@ -1,90 +1,93 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Nova receita - FoodFy</title>
+  <title>Nova receita - FoodFy</title>
 {% endblock head %}
 
 {% block menu %}
-    <div class="container-black">
-        <div class="logotipo">
-            <a><img src="/logo-black.png" alt="FoodFy"></a>
-        </div>
-        <div class="navigation black">
-            <a href="/admin/recipes">Receitas</a>
-            <a href="/admin/chefs">Chefs</a>
-        </div>
+  <div class="container-black">
+    <div class="logotipo">
+      <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
     </div>
+    <div class="navigation black">
+      <a href="/admin/recipes">Receitas</a>
+      <a href="/admin/chefs">Chefs</a>
+    </div>
+  </div>
 {% endblock menu %}
 
 {% block content %}
 
-    <form method="POST" action="/admin/recipes?_method=PUT">
+  <form method="POST" action="/admin/recipes?_method=PUT">
 
-        <input type="hidden" name="id" value="{{recipes.id}}">
-        <section class="details">
-            <h2>Criando a Receita</h3>
-            <div class="item">
-                <div>
-                    <p>Autor da Receita</p>
-                </div>
-                <div>
-                    <select name="chef_id">
-                        {% for chef in chefsOptions %}
-                            <option value="{{chef.id}}" {% if recipes.chef_id == chef.id %} selected="selected" {% endif %}>
-                                {{ chef.name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-            <div class="item">
-                <div>Foto da Receita</div>
-                <div><input type="text" name="image" placeholder="http://" value="{{ recipes.image }}"></div>
-            </div>
+    <input type="hidden" name="id" value="{{recipes.id}}">
+    <section class="details">
+      <h2>Editando a Receita</h3>
 
-            <div class="item">
-                <div>Nome da receita</div>
-                <div><input type="text" name="title" placeholder="Frango a passarinho" value="{{recipes.title}}"></div>
-            </div>
+      <div class="item">
+        <div>
+          <p>Autor da Receita</p>
+        </div>
+        <div>
+          <select name="chef_id">
+            {% for chef in chefs %}
+              <option value="{{chef.id}}" {% if (recipes.chef_id == chef.id) %} selected="selected" {% endif %}>
+                {{ chef.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
 
-            <div class="item">
-                <div>Ingredientes</div>
-                {% for ingredient in recipes.ingredients %}
-                    <div id="ingredients">
-                        <div class="ingredient">
-                            <input type="text" name="ingredients[]" placeholder="Ingrediente" value="{{ ingredient }}"/>
-                        </div>
-                    </div>
-                {% endfor %}
-                <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
-            </div>
+      </div>
 
-            <div class="item">
-                <div>Modo de Preparo</div>
-                {% for preparation in recipes.preparation %}
-                    <div id="preparations">
-                        <div class="preparation">
-                            <input type="text" name="preparation[]" placeholder="Adicione o passo" value="{{ preparation }}"/>
-                        </div>
-                    </div>
-                {% endfor %}
-                <button type="button" class="add-preparation">Adicionar novo passo</button>
-            </div>
+      <div class="item">
+        <div>Foto da Receita</div>
+        <div><input type="text" name="image" placeholder="http://" value="{{ recipes.image }}"></div>
+      </div>
 
-            <div class="item large">
-                <div>Informações adicionais</div>
-                <div>
-                    <textarea name="information" cols="30" rows="10" value="{{recipes.information}}">{{recipes.information}}</textarea>
-                </div>
-            </div>
-            <button type="submit">Salvar receita</button>
-        </section>
-    </form>
+      <div class="item">
+        <div>Nome da receita</div>
+        <div><input type="text" name="title" placeholder="Frango a passarinho" value="{{recipes.title}}"></div>
+      </div>
 
-    <form id="formDelete" action="/admin/recipes?_method=DELETE" method="POST">
-        <input type="hidden" name="id" value="{{recipes.id}}">
-        <button class="buttonRed" type="submit">Deletar</button>
-    </form>
+      <div class="item">
+        <div>Ingredientes</div>
+        {% for ingredient in recipes.ingredients %}
+          <div id="ingredients">
+            <div class="ingredient">
+              <input type="text" name="ingredients[]" placeholder="Ingrediente" value="{{ ingredient }}"/>
+            </div>
+          </div>
+        {% endfor %}
+        <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+      </div>
+
+      <div class="item">
+        <div>Modo de Preparo</div>
+        {% for preparation in recipes.preparation %}
+          <div id="preparations">
+            <div class="preparation">
+              <input type="text" name="preparation[]" placeholder="Adicione o passo" value="{{ preparation }}"/>
+            </div>
+          </div>
+        {% endfor %}
+        <button type="button" class="add-preparation">Adicionar novo passo</button>
+      </div>
+
+      <div class="item large">
+        <div>Informações adicionais</div>
+        <div>
+          <textarea name="information" cols="30" rows="10" value="{{recipes.information}}">{{recipes.information}}</textarea>
+        </div>
+      </div>
+      <button type="submit">Salvar receita</button>
+    </section>
+  </form>
+
+  <form id="formDelete" action="/admin/recipes?_method=DELETE" method="POST">
+    <input type="hidden" name="id" value="{{recipes.id}}">
+    <button class="buttonRed" type="submit">Deletar</button>
+  </form>
 
 {% endblock content %}
 

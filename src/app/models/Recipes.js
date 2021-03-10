@@ -1,103 +1,49 @@
 const db = require("../../config/db");
-const { date } = require("../../lib/utils");
 
 module.exports = {
-  paginate(params) {
-    const { filter, limit, offset, callback } = params;
-
-    let query = "",
-      filterQuery = "";
-
-    if (filter) {
-      filterQuery = `
-            WHERE chefs.name ILIKE '%${filter}%'
-            OR recipes.title ILIKE '%${filter}%'
-            `;
-    }
-
-    query = `
-        SELECT recipes.* AS recipe,
-        json_build_object('id',chefs.id, 'name',chefs.name) AS chef
-        FROM recipes
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        ${filterQuery}
-        LIMIT $1 OFFSET $2
-        `;
-
-    db.query(query, [limit, offset], function (err, results) {
-      if (err) throw `Database error! ${err}`;
-
-      callback(results.rows);
-    });
+  all() {
+    return db.query(`
+    SELECT * FROM recipes ORDER BY id`);
   },
-  chefsSelectOptions(callback) {
-    db.query(
-      `
-        SELECT name, id FROM chefs`,
-      function (err, results) {
-        if (err) throw `Database error! ${err}`;
-
-        callback(results.rows);
-      }
-    );
-  },
-  post(data, callback) {
+  create(data) {
     const query = `
-            INSERT INTO recipes (
-                chef_id,
-                image,
-                title,
-                ingredients,
-                preparation,
-                information,
-                created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
-            RETURNING id
-        `;
+      INSERT INTO recipes (
+        chef_id,
+        image,
+        title,
+        ingredients,
+        preparation,
+        information
+      ) VALUES ($1, $2, $3, $4, $5, $6)
+      RETURNING id
+    `;
+
     const values = [
-      data.chef_id,
+      data.chef_id || 1,
       data.image,
       data.title,
       data.ingredients,
       data.preparation,
       data.information,
-      date(Date.now()).iso,
     ];
 
-    db.query(query, values, function (err, results) {
-      if (err) throw `Database error! ${err}`;
-
-      callback(results.rows[0]);
-    });
+    return db.query(query, values);
   },
-  find(id, callback) {
-    db.query(
-      `
-            SELECT recipes.* AS recipes,
-            json_build_object('id',chefs.id, 'name',chefs.name) AS chef
-            FROM recipes 
-            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            WHERE recipes.id = $1
-            `,
-      [id],
-      function (err, results) {
-        if (err) throw `Database error! ${err}`;
-
-        callback(results.rows[0]);
-      }
-    );
+  find(id) {
+    return db.query(`SELECT * FROM recipes WHERE id = $1`, [id]);
   },
-  update(data, callback) {
+  update(data) {
     const query = `
-        UPDATE recipes SET
-            chef_id=($1),
-            image=($2),
-            title=($3),
-            ingredients=($4),
-            preparation=($5),
-            information=($6)
-        WHERE id = $7
-        `;
+      UPDATE recipes SET
+        chef_id = ($1),
+        image = ($2),
+        title = ($3),
+        ingredients = ($4),
+        preparation = ($5),
+        information = ($6)
+      WHERE id = $7
+    `;
+
     const values = [
       data.chef_id,
       data.image,
@@ -107,27 +53,10 @@ module.exports = {
       data.information,
       data.id,
     ];
-    console.log(values);
-    db.query(query, values, function (err, results) {
-      if (err) throw `Database error! ${err}`;
-      callback();
-    });
-  },
-  delete(id, callback) {
-    db.query(
-      `
-            DELETE FROM recipes WHERE id = $1`,
-      [id],
-      function (err, results) {
-        if (err) throw `Database error! ${err}`;
 
-        callback();
-      }
-    );
+    return db.query(query, values);
   },
-  searchChef(id, callback) {
-    db.query(`
-            SELECT name, id FROM chefs
-        `);
+  delete(id) {
+    return db.query(`DELETE FROM recipes WHERE id = $1`, [id]);
   },
 };

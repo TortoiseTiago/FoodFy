@@ -1,4 +1,5 @@
 const express = require("express");
+require("express-async-errors");
 const nunjucks = require("nunjucks");
 const routes = require("./routes");
 const methodOverride = require("method-override");

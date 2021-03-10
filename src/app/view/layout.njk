@@ -12,29 +12,29 @@
   </head>
 
   <body>
-    {% block menu %}
-      <div class="container-menu">
-
-        <div class="logotipo">
-          <a href="/"><img src="/logo.png" alt="FoodFy"></a>
-        </div>
-
-        <div class="navigation">
-          <a href="/about">Sobre</a>
-          <a href="/receituario">Receitas</a>
-          <a href="/cozinheiros">Chefs</a>
-        </div>
-
-        <div class="search">
-          <form method="GET">
-            <input type="text" name="filter" placeholder="Buscar receita/chef" value="{{filter}}">
-            <button type="submit">Filtrar</button>
-          </form>
-        </div>
-      </div>
-    {% endblock menu %}
-
     <div class="container-body">
+      {% block menu %}
+        <div class="container-menu">
+
+          <div class="logotipo">
+            <a href="/home"><img src="/logo.png" alt="FoodFy"></a>
+          </div>
+
+          <div class="navigation">
+            <a href="/about">Sobre</a>
+            <a href="/receituario">Receitas</a>
+            <a href="/cozinheiros">Chefs</a>
+          </div>
+
+          <div class="search">
+            <form method="GET">
+              <input type="text" name="filter" placeholder="Buscar receita/chef" value="{{filter}}">
+              <button type="submit">Filtrar</button>
+            </form>
+          </div>
+        </div>
+      {% endblock menu %}
+
       {% block content %}{% endblock content %}
     </div>
 

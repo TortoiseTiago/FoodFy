@@ -1,71 +1,67 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>{{chef.name}}
-        - FoodFy</title>
+  <title>{{chef.name}}
+    - FoodFy</title>
 {% endblock head %}
 
 {% block menu %}
-    <div class="container-black">
-        <div class="logotipo">
-            <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
-        </div>
-        <div class="navigation black">
-            <a href="/admin/recipes">Receitas</a>
-            <a href="/admin/chefs">Chefs</a>
-        </div>
+  <div class="container-black">
+    <div class="logotipo">
+      <a href="/"><img src="/logo-black.png" alt="FoodFy"></a>
     </div>
+    <div class="navigation black">
+      <a href="/admin/recipes">Receitas</a>
+      <a href="/admin/chefs">Chefs</a>
+    </div>
+  </div>
 {% endblock menu %}
 
 {% block content %}
 
-    <div class="header_admin viewChef">
-        <div>
-            <h3>Chef: {{chef.name}}</h3>
-        </div>
-        <div>
-            <a class="button createRecipe" 
-                href="/admin/chefs/{{ chef.id }}/edit">
-                Editar informações
-            </a>
-        </div>
+  <div class="header_admin viewChef">
+    <div></div>
+    <div>
+      <a class="button createRecipe" href="/admin/chefs/{{ chef.id }}/edit">
+        Editar informações
+      </a>
+    </div>
+  </div>
+
+  <div class="bannerChef">
+
+    <div class="image">
+      <img src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
+    </div>
+    <div class="chefName">
+      <h3>{{ chef.name }}</h3>
+    </div>
+    <div class="countRecipe">
+      <p>{{ chef.total_recipes }}receitas</p>
     </div>
 
-    <div class="bannerChef">
+  </div>
 
-        <div class="image">
-            <img src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
+  <div class="recipesChef">
+
+    <h1 class="headerChef">Receitas</h1>
+
+    <div class="cardRecipe">
+
+      {% for recipe in chef.recipes %}
+
+        <div class="imageRecipe">
+          <img src="" alt="">
         </div>
-        <div class="chefName">
-            <h3>{{ chef.name }}</h3>
+        <div class="infoRecipe">
+          <h2>{{recipe.title}}</h2>
+          <p>{{recipe.author}}</p>
+          <a href="">visualizar</a>
         </div>
-        <div class="countRecipe">
-            <p>{{ chef.total_recipes }}
-                5 receitas</p>
-        </div>
+      {% endfor %}
 
     </div>
 
-    <div class="recipesChef">
-
-        <h1 class="headerChef">Receitas</h1>
-
-        <div class="cardRecipe">
-
-            {% for recipe in chef.recipes %}
-
-                <div class="imageRecipe">
-                    <img src="" alt="">
-                </div>
-                <div class="infoRecipe">
-                    <h2>{{recipe.title}}</h2>
-                    <p>{{recipe.author}}</p>
-                    <a href="">visualizar</a>
-                </div>
-            {% endfor %}
-
-        </div>
-
-    </div>
+  </div>
 
 {% endblock content %}
