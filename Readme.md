@@ -74,8 +74,8 @@
 
 -[Persistindo dados do FoodFy](https://github.com/rocketseat-education/bootcamp-launchbase-desafios-05/blob/master/desafios/05-persistindo-dados-foodfy.md)
 
-- [ ] Banco de dados
-- [ ] Cadastro de chefs
+- [x] Banco de dados
+- [x] Cadastro de chefs
 - [ ] Busca de receitas
 - [ ] Lista de chefs
 
